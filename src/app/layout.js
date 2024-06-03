@@ -1,8 +1,8 @@
 import { yekan } from "@/utils/fonts";
 
 import "./globals.css";
-import Header from "@/layout/Header";
-import Footer from "@/layout/Footer";
+import Header from "@/layout/Header/Header";
+import Footer from "@/layout/Footer/Footer";
 
 export const metadata = {
   title: "Real State App",
