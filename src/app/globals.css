@@ -34,3 +34,8 @@ input,
 textarea {
   font-family: inherit;
 }
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

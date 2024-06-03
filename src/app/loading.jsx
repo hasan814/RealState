@@ -4,7 +4,7 @@ import { RotatingLines } from "react-loader-spinner";
 
 const Loading = () => {
   return (
-    <div className="Loading">
+    <div className="loading">
       <RotatingLines
         visible={true}
         height="96"
