@@ -1,9 +1,8 @@
-import { Inter } from "next/font/google";
+import { yekan } from "@/utils/fonts";
+
 import "./globals.css";
 import Header from "@/layout/Header";
 import Footer from "@/layout/Footer";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Real State App",
@@ -12,8 +11,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} container`}>
+    <html lang="fa" dir="rtl">
+      <body className={`${yekan.className} container`}>
         <Header />
         <main>{children}</main>
         <Footer />
