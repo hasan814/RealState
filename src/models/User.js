@@ -4,9 +4,6 @@ const userSchema = new Schema({
   email: {
     type: String,
     required: true,
-    unique: true,
-    match: [/\S+@\S+\.\S+/, "is invalid"],
-    index: true,
   },
   password: {
     type: String,
@@ -15,7 +12,7 @@ const userSchema = new Schema({
   createdAt: {
     type: Date,
     default: () => Date.now(),
-    immutable,
+    immutable: true,
   },
 });
 
