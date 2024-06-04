@@ -1,7 +1,18 @@
 import DashboardPage from "@/templates/Dashboard/DashboardPage";
+import connectDB from "@/utils/connectDB";
+import { getServerSession } from "next-auth";
+import { authOptions } from "../api/auth/[...nextauth]/route";
+import User from "@/models/User";
 
-const Dashboard = () => {
-  return <DashboardPage />;
+const Dashboard = async () => {
+  // ============ Session =============
+  await connectDB();
+  const session = await getServerSession(authOptions);
+  const email = session?.user.email;
+  const user = await User.findOne({ email });
+  console.log(user);
+  // ============ Rendering =============
+  return <DashboardPage createdAt={user.createdAt} />;
 };
 
 export default Dashboard;

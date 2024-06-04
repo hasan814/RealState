@@ -2,8 +2,9 @@ import { CgProfile } from "react-icons/cg";
 import styles from "./SideBar.module.css";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+
 import Link from "next/link";
-import LogOut from "@/modules/LogOut";
+import LogOut from "@/modules/LogOut/LogOut";
 
 const SideBar = async ({ children }) => {
   // ========== Session ===========
