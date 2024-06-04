@@ -1,7 +1,8 @@
-import DashboardPage from "@/templates/Dashboard/DashboardPage";
-import connectDB from "@/utils/connectDB";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../api/auth/[...nextauth]/route";
+
+import DashboardPage from "@/templates/Dashboard/DashboardPage";
+import connectDB from "@/utils/connectDB";
 import User from "@/models/User";
 
 const Dashboard = async () => {
