@@ -24,8 +24,18 @@ const ProfilePage = () => {
   });
 
   // ========== Function =========
-  const submitHandler = () => {
-    console.log(profileData);
+  const submitHandler = async () => {
+    const response = await fetch("/api/profile", {
+      method: "POST",
+      body: JSON.stringify(profileData),
+      headers: { "Content-Type": "application/json" },
+    });
+    const data = await response.json();
+    if (data.error) {
+      console.log(data);
+    } else {
+      console.log("success", data);
+    }
   };
 
   // ========== Rendering =========
@@ -47,7 +57,7 @@ const ProfilePage = () => {
       />
       <TextInput
         title="آدرس"
-        name="address"
+        name="location"
         profileData={profileData}
         setProfileData={setProfileData}
       />

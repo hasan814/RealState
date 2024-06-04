@@ -1,3 +1,4 @@
+import Profile from "@/models/Profile";
 import User from "@/models/User";
 import connectDB from "@/utils/connectDB";
 import { Types } from "mongoose";
@@ -31,6 +32,7 @@ export async function POST(req) {
       );
 
     const user = await User.findOne({ email });
+    console.log(user);
     if (!user)
       return NextResponse.json(
         { error: "حساب کاربری یافت نشد ." },
@@ -61,7 +63,7 @@ export async function POST(req) {
       rules,
       category,
       price: +price,
-      userId: new Types.ObjectId.createFromHexString(user._id),
+      userId: new Types.ObjectId(user._id),
     });
     return NextResponse.json(
       { message: "آگهی جدید اضافه شد ." },
