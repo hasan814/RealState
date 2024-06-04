@@ -3,6 +3,7 @@ import { yekan } from "@/utils/fonts";
 import "./globals.css";
 import Header from "@/layout/Header/Header";
 import Footer from "@/layout/Footer/Footer";
+import NextAuthProvider from "@/providers/NextAuthProvider";
 
 export const metadata = {
   title: "Real State App",
@@ -13,9 +14,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="fa" dir="rtl">
       <body className={`${yekan.className} container`}>
-        <Header />
-        <main>{children}</main>
-        <Footer />
+        <NextAuthProvider>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+        </NextAuthProvider>
       </body>
     </html>
   );
