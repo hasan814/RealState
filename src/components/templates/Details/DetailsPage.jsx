@@ -1,7 +1,71 @@
-import styles from "./DetailsPage.module.css";
+import { HiOutlineLocationMarker } from "react-icons/hi";
+import { categories, icons } from "@/utils/helper";
+import { BiCalendarCheck } from "react-icons/bi";
+import { AiOutlinePhone } from "react-icons/ai";
+import { GiOfficeChair } from "react-icons/gi";
+import { SiHomebridge } from "react-icons/si";
+import { RiHome3Line } from "react-icons/ri";
+import { MdApartment } from "react-icons/md";
+import { v4 as uuidv4 } from "uuid";
+import { BiStore } from "react-icons/bi";
+import { e2p, sp } from "@/utils/replaceNumber";
 
-const DetailsPage = () => {
-  return <div className={styles.conatiner}></div>;
+import ItemList from "@/elements/List/ItemList";
+import ShareBtn from "@/elements/Share/ShareBtn";
+import styles from "./DetailsPage.module.css";
+import Title from "@/elements/Title/Title";
+
+const DetailsPage = ({ data }) => {
+  const {
+    price,
+    title,
+    location,
+    phone,
+    description,
+    category,
+    amenities,
+    rules,
+    realState,
+    constructionDate,
+  } = data;
+  return (
+    <div className={styles.container}>
+      <div className={styles.main}>
+        <h1>{title}</h1>
+        <span>
+          <HiOutlineLocationMarker />
+          {location}
+        </span>
+        <Title>توضیحات</Title>
+        <p>{description}</p>
+        <Title>امکانات رفاهی</Title>
+        <ItemList data={amenities} />
+        <h3 className={styles.title}>قوانین</h3>
+        <ItemList data={rules} />
+      </div>
+      <div className={styles.sidebar}>
+        <div className={styles.realState}>
+          <SiHomebridge />
+          <p>{realState} املاک</p>
+          <span>
+            <AiOutlinePhone />
+            {e2p(phone)}
+          </span>
+        </div>
+        <ShareBtn />
+        <div className={styles.price}>
+          <p>
+            {icons[category]} {categories[category]}
+          </p>
+          <p>{sp(price)} تومان</p>
+          <p>
+            <BiCalendarCheck />
+            {new Date(constructionDate).toLocaleDateString("fa-IR")}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default DetailsPage;
