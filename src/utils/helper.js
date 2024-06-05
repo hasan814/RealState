@@ -31,7 +31,7 @@ export const categories = [
 ];
 
 export const queries = [
-  { villa: "ویلا" },
+  { villa: "خانه ویلایی" },
   { apartment: "آپارتمان" },
   { office: "دفتر" },
   { store: "مغازه" },

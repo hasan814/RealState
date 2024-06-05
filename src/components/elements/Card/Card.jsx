@@ -6,7 +6,7 @@ import { sp } from "@/utils/replaceNumber";
 import styles from "./Card.module.css";
 import Link from "next/link";
 
-const Card = ({ title, category, location, price }) => {
+const Card = ({ _id, title, category, location, price }) => {
   return (
     <div className={styles.container}>
       <div className={styles.icon}>{icons[category]}</div>
@@ -16,7 +16,7 @@ const Card = ({ title, category, location, price }) => {
         {location}
       </p>
       <span>{sp(price)} تومان</span>
-      <Link href={"/"}>
+      <Link href={`/buy-residential/${_id}`}>
         مشاهده آگهی
         <BiLeftArrowAlt />
       </Link>
