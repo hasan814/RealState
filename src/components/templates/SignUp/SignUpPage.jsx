@@ -1,12 +1,12 @@
 "use client";
 
 import { toast, Toaster } from "react-hot-toast";
-import { ThreeDots } from "react-loader-spinner";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 import styles from "./SignUpPage.module.css";
 import Link from "next/link";
+import Loader from "@/modules/Loader";
 
 const SignUpPage = () => {
   // ============= Router ============
@@ -65,13 +65,7 @@ const SignUpPage = () => {
           onChange={(event) => setRePassword(event.target.value)}
         />
         {loading ? (
-          <ThreeDots
-            color="#304ffe"
-            height={45}
-            ariaLabel="three-dots-loading"
-            visible={true}
-            wrapperStyle={{ margin: "auto" }}
-          />
+          <Loader />
         ) : (
           <button type="submit" onClick={signUpHandler}>
             ثبت نام

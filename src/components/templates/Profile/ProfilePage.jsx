@@ -1,5 +1,6 @@
 "use client";
 
+import { toast, Toaster } from "react-hot-toast";
 import { useState } from "react";
 
 import styles from "./ProfilePage.module.css";
@@ -7,9 +8,11 @@ import TextInput from "@/modules/Inputs/textInput";
 import RadioList from "@/modules/Radio/RadioList";
 import TextList from "@/modules/TextList/TextList";
 import CustomeDate from "@/modules/Date/CustomeDate";
+import Loader from "@/modules/Loader";
 
 const ProfilePage = () => {
   // ========== State =========
+  const [loading, setLoading] = useState(false);
   const [profileData, setProfileData] = useState({
     title: "",
     description: "",
@@ -25,22 +28,25 @@ const ProfilePage = () => {
 
   // ========== Function =========
   const submitHandler = async () => {
+    setLoading(true);
     const response = await fetch("/api/profile", {
       method: "POST",
       body: JSON.stringify(profileData),
       headers: { "Content-Type": "application/json" },
     });
     const data = await response.json();
+    setLoading(false);
     if (data.error) {
-      console.log(data);
+      toast.error(data.error);
     } else {
-      console.log("success", data);
+      toast.success(data.message);
     }
   };
 
   // ========== Rendering =========
   return (
     <div className={styles.container}>
+      <Toaster />
       <h3>ثبت آگهی</h3>
       <TextInput
         title="عنوان آگهی"
@@ -93,9 +99,13 @@ const ProfilePage = () => {
         setProfileData={setProfileData}
       />
       <CustomeDate profileData={profileData} setProfileData={setProfileData} />
-      <button className={styles.submit} onClick={submitHandler}>
-        ثبت آگهی
-      </button>
+      {loading ? (
+        <Loader />
+      ) : (
+        <button className={styles.submit} onClick={submitHandler}>
+          ثبت آگهی
+        </button>
+      )}
     </div>
   );
 };
