@@ -1,9 +1,25 @@
+import { getServerSession } from "next-auth";
+import { NextResponse } from "next/server";
+import { Types } from "mongoose";
+
 import Profile from "@/models/Profile";
 import User from "@/models/User";
 import connectDB from "@/utils/connectDB";
-import { Types } from "mongoose";
-import { getServerSession } from "next-auth";
-import { NextResponse } from "next/server";
+
+export async function GET(req) {
+  try {
+    await connectDB();
+
+    const profiles = await Profile.find().select("-userId");
+    return NextResponse.json({ data: profiles }, { status: 200 });
+  } catch (error) {
+    console.log(error);
+    return NextResponse.json(
+      { error: "مشکلی در سرور رخ داده است ." },
+      { status: 500 }
+    );
+  }
+}
 
 export async function POST(req) {
   try {
