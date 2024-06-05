@@ -9,7 +9,7 @@ import TextInput from "@/modules/Inputs/textInput";
 import RadioList from "@/modules/Radio/RadioList";
 import TextList from "@/modules/TextList/TextList";
 import CustomeDate from "@/modules/Date/CustomeDate";
-import Loader from "@/modules/Loader";
+import Loader from "@/elements/Loader/Loader";
 
 const ProfilePage = ({ data }) => {
   // ========== Router =========

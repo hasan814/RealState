@@ -1,16 +1,21 @@
 "use client";
 
 import { AiOutlineDelete } from "react-icons/ai";
+import { toast, Toaster } from "react-hot-toast";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { FiEdit } from "react-icons/fi";
 
 import styles from "./DashboardCard.module.css";
 import Card from "@/elements/Card/Card";
-import { useRouter } from "next/navigation";
-import toast, { Toaster } from "react-hot-toast";
+import Loader from "@/elements/Loader/Loader";
 
 const DashboardCard = ({ data }) => {
   // =========== Router ==========
   const router = useRouter();
+
+  // =========== State ==========
+  const [deleteLoading, setDeleteLoading] = useState(false);
 
   // =========== Function ==========
   const editHandler = () => {
@@ -18,10 +23,12 @@ const DashboardCard = ({ data }) => {
   };
 
   const deleteHandler = async () => {
+    setDeleteLoading(true);
     const response = await fetch(`/api/profile/delete/${data._id}`, {
       method: "DELETE",
     });
     const deleteData = await response.json();
+    setDeleteLoading(false);
     if (deleteData.error) {
       toast.error(deleteData.error);
     } else {
@@ -40,10 +47,15 @@ const DashboardCard = ({ data }) => {
           ویرایش
           <FiEdit />
         </button>
-        <button onClick={deleteHandler}>
-          حذف آگهی
-          <AiOutlineDelete />
-        </button>
+
+        {deleteLoading ? (
+          <Loader />
+        ) : (
+          <button onClick={deleteHandler}>
+            حذف آگهی
+            <AiOutlineDelete />
+          </button>
+        )}
       </div>
     </div>
   );

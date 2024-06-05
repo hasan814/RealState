@@ -7,7 +7,7 @@ import { signIn } from "next-auth/react";
 
 import styles from "./SignInPage.module.css";
 import Link from "next/link";
-import Loader from "@/modules/Loader";
+import Loader from "@/elements/Loader/Loader";
 
 const SignInPage = () => {
   // ============= Router ============
