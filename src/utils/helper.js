@@ -29,3 +29,10 @@ export const categories = [
   { id: 3, title: "مغازه", name: "store" },
   { id: 4, title: "دفتر", name: "office" },
 ];
+
+export const queries = [
+  { villa: "ویلا" },
+  { apartment: "آپارتمان" },
+  { office: "دفتر" },
+  { store: "مغازه" },
+];
