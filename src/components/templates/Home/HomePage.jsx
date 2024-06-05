@@ -1,6 +1,7 @@
+import { categories, cities, services } from "@/utils/helper";
 import { v4 as uuidv4 } from "uuid";
-import { categories, services } from "@/utils/helper";
 import { FiCircle } from "react-icons/fi";
+import { FaCity } from "react-icons/fa";
 
 import styles from "./HomePage.module.css";
 import CategoryCard from "@/modules/CategoryCard/CategoryCard";
@@ -29,6 +30,17 @@ const HomePage = () => {
             key={uuidv4()}
           />
         ))}
+      </div>
+      <div className={styles.city}>
+        <h3>شهرهای پربازدید</h3>
+        <ul>
+          {cities.map((city) => (
+            <li key={uuidv4()}>
+              <FaCity />
+              <span>{city}</span>
+            </li>
+          ))}
+        </ul>
       </div>
     </>
   );
