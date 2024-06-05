@@ -5,10 +5,16 @@ import { FiEdit } from "react-icons/fi";
 
 import styles from "./DashboardCard.module.css";
 import Card from "@/elements/Card/Card";
+import { useRouter } from "next/navigation";
 
 const DashboardCard = ({ data }) => {
+  // =========== Router ==========
+  const router = useRouter();
+
   // =========== Function ==========
-  const editHandler = () => {};
+  const editHandler = () => {
+    router.push(`/dashboard/my-profiles/${data._id}`);
+  };
   const deleteHandler = () => {};
 
   // =========== Rendering ==========
