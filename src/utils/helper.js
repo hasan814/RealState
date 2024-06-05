@@ -9,3 +9,16 @@ export const icons = {
   store: <BiStore />,
   office: <GiOfficeChair />,
 };
+
+export const services = ["خرید", "فروش", "رهن", "اجاره"];
+
+export const cities = [
+  "تهران",
+  "سنندج",
+  "کرمانشاه",
+  "اهواز",
+  "مشهد",
+  "اصفحان",
+  "شیراز",
+  "خرم آباد",
+];
