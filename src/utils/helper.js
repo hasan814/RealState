@@ -22,3 +22,10 @@ export const cities = [
   "شیراز",
   "خرم آباد",
 ];
+
+export const categories = [
+  { id: 1, title: "خانه ویلایی", name: "villa" },
+  { id: 2, title: "آپارتمان", name: "apartment" },
+  { id: 3, title: "مغازه", name: "store" },
+  { id: 4, title: "دفتر", name: "office" },
+];

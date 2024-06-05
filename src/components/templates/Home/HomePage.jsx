@@ -1,8 +1,9 @@
 import { v4 as uuidv4 } from "uuid";
-import { services } from "@/utils/helper";
+import { categories, services } from "@/utils/helper";
 import { FiCircle } from "react-icons/fi";
 
 import styles from "./HomePage.module.css";
+import CategoryCard from "@/modules/CategoryCard/CategoryCard";
 
 const HomePage = () => {
   return (
@@ -19,6 +20,15 @@ const HomePage = () => {
             ))}
           </ul>
         </div>
+      </div>
+      <div className={styles.categories}>
+        {categories.map((category) => (
+          <CategoryCard
+            title={category.title}
+            name={category.name}
+            key={uuidv4()}
+          />
+        ))}
       </div>
     </>
   );
