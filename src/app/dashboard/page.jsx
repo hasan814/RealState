@@ -11,7 +11,7 @@ const Dashboard = async () => {
   const session = await getServerSession(authOptions);
   const email = session?.user.email;
   const user = await User.findOne({ email });
-  console.log(user);
+
   // ============ Rendering =============
   return <DashboardPage createdAt={user.createdAt} />;
 };
