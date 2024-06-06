@@ -6,7 +6,7 @@ import { useState } from "react";
 
 import styles from "./SignUpPage.module.css";
 import Link from "next/link";
-import Loader from "@/modules/Loader";
+import Loader from "@/elements/Loader/Loader";
 
 const SignUpPage = () => {
   // ============= Router ============

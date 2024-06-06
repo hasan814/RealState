@@ -10,7 +10,7 @@ export async function GET(req) {
   try {
     await connectDB();
 
-    const profiles = await Profile.find().select("-userId");
+    const profiles = await Profile.find({ published: true }).select("-userId");
     return NextResponse.json({ data: profiles }, { status: 200 });
   } catch (error) {
     console.log(error);
@@ -47,7 +47,6 @@ export async function POST(req) {
       );
 
     const user = await User.findOne({ email });
-    console.log(user);
     if (!user)
       return NextResponse.json(
         { error: "حساب کاربری یافت نشد ." },
