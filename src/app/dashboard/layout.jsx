@@ -5,6 +5,10 @@ import { redirect } from "next/navigation";
 import connectDB from "@/utils/connectDB";
 import User from "@/models/User";
 
+export const metadata = {
+  title: "پنل کاربری",
+};
+
 const DashBoardLayout = async ({ children }) => {
   // =========== Session ===========
   const session = await getServerSession(authOptions);
