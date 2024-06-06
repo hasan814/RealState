@@ -23,6 +23,10 @@ const profileSchema = new Schema(
       default: [],
     },
     userId: { type: Schema.Types.ObjectId, ref: "User" },
+    published: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: true }
 );

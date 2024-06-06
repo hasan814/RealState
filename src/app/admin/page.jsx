@@ -4,12 +4,15 @@ import { authOptions } from "../api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
 import User from "@/models/User";
 import SideBar from "@/layout/Dashboard/SideBar";
+import Profile from "@/models/Profile";
+import AdminPage from "@/templates/Admin/AdminPage";
 
 const Admin = async () => {
   // =========== Session ============
   await connectDB();
   const session = await getServerSession(authOptions);
   const user = await User.findOne({ email: session.user.email });
+  const profiles = await Profile.find({ published: false });
 
   // =========== Rendering ============
   if (!session) redirect("/signin");
@@ -17,7 +20,7 @@ const Admin = async () => {
 
   return (
     <SideBar role={user.role} email={user.email}>
-      <div>Admin</div>
+      <AdminPage profiles={profiles} />
     </SideBar>
   );
 };
