@@ -1,11 +1,13 @@
 import BuyResidentialPage from "@/templates/Residential/BuyResidentialPage";
-import { getData } from "@/utils/action";
 
 const BuyResitential = async ({ searchParams }) => {
-  const data = await getData();
-  let finalData = data.data;
+  const response = await fetch("http://localhost:3000/api/profile", {
+    cache: "no-store",
+  });
+  const data = await response.json();
+  if (data.error) return <h3>هیچ مشکلی پیش آمده است .</h3>;
 
-  if (finalData.error) return <h3>مشکلی رخ داده است .</h3>;
+  let finalData = data.data;
 
   if (searchParams.category) {
     finalData = finalData.filter(
