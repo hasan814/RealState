@@ -9,7 +9,7 @@ const Dashboard = async () => {
   // ============ Session =============
   await connectDB();
   const session = await getServerSession(authOptions);
-  const email = session?.user.email;
+  const email = session.user.email;
   const user = await User.findOne({ email });
 
   // ============ Rendering =============

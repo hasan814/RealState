@@ -2,12 +2,7 @@ import { HiOutlineLocationMarker } from "react-icons/hi";
 import { categories, icons } from "@/utils/helper";
 import { BiCalendarCheck } from "react-icons/bi";
 import { AiOutlinePhone } from "react-icons/ai";
-import { GiOfficeChair } from "react-icons/gi";
 import { SiHomebridge } from "react-icons/si";
-import { RiHome3Line } from "react-icons/ri";
-import { MdApartment } from "react-icons/md";
-import { v4 as uuidv4 } from "uuid";
-import { BiStore } from "react-icons/bi";
 import { e2p, sp } from "@/utils/replaceNumber";
 
 import ItemList from "@/elements/List/ItemList";

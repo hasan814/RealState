@@ -8,7 +8,6 @@ const BuyResitential = async ({ searchParams }) => {
   if (data.error) return <h3>هیچ مشکلی پیش آمده است .</h3>;
 
   let finalData = data.data;
-
   if (searchParams.category) {
     finalData = finalData.filter(
       (item) => item.category === searchParams.category
