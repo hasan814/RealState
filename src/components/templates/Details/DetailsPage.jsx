@@ -23,6 +23,7 @@ const DetailsPage = ({ data }) => {
     realState,
     constructionDate,
   } = data;
+
   return (
     <div className={styles.container}>
       <div className={styles.main}>
